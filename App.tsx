@@ -29,29 +29,34 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen flex flex-col font-sans">
       <Header />
       
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-12">
-        <div className="mb-12 text-center max-w-2xl mx-auto">
-             <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-               Resolve Your Confusion. <span className="text-teal-600">Instantly.</span>
+      {/* Added pb-32 on mobile to account for the sticky button in InputSection when active */}
+      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-8 md:py-16 pb-32 md:pb-16">
+        <div className="mb-10 md:mb-16 text-center max-w-3xl mx-auto">
+             <div className="inline-block px-4 py-1.5 rounded-full bg-indigo-500/10 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-6 border border-indigo-500/20">
+                🚀 Educational Psychology Engine
+             </div>
+             <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+               Confused? Let's fix your <br className="hidden md:block" />
+               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 animate-gradient-x">Mental Model.</span>
              </h2>
-             <p className="text-lg text-slate-600">
-               ConceptFix AI identifies the exact root cause of your misunderstanding and prescribes a precise fix, without re-teaching the whole topic.
+             <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto">
+               Don't just re-read the textbook. We diagnose the <em>exact</em> missing piece of your understanding and fix it instantly.
              </p>
         </div>
 
         <InputSection onDiagnose={handleDiagnose} isLoading={isLoading} />
 
         {error && (
-          <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl mb-8 flex items-center gap-3 fade-in">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <div className="p-4 bg-red-900/20 border border-red-500/30 text-red-300 rounded-xl mb-8 flex items-start gap-3 fade-in shadow-sm">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="12" y1="8" x2="12" y2="12"></line>
                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
              </svg>
-            {error}
+             <span className="text-sm md:text-base font-medium">{error}</span>
           </div>
         )}
 
@@ -60,9 +65,9 @@ const App: React.FC = () => {
         )}
       </main>
       
-      <footer className="bg-white border-t border-slate-200 py-8 mt-auto">
-        <div className="max-w-4xl mx-auto px-4 text-center text-slate-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} ConceptFix AI. Powered by Google Gemini.</p>
+      <footer className="bg-slate-950/50 backdrop-blur-sm border-t border-white/5 py-8 mt-auto hidden md:block">
+        <div className="max-w-4xl mx-auto px-4 text-center text-slate-500 text-sm">
+          <p>&copy; {new Date().getFullYear()} Cognito AI. Powered by Google Gemini.</p>
         </div>
       </footer>
     </div>
